@@ -1,0 +1,78 @@
+openapi: 3.0.2
+
+info:
+  title: "Pet Store"
+  version: 1.0.0
+  description: "Endpoints for the pet store"
+
+servers:
+  - url: http://petstore.your.server.url
+
+paths:
+  /v1/store-info:
+    get:
+      summary: Get information about the pet store
+      operationId: storeInfo
+      tags:
+        - store
+      responses:
+        '200':
+          description: Info about the pet store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StoreInfo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    StoreInfo:
+      type: object
+      required:
+        - phoneNumber
+        - address
+        - recentPets
+      properties:
+        phoneNumber:
+          type: string
+        address:
+          type: string
+        recentPets:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pet"
+
+    Pet:
+      type: object
+      required:
+        - petId
+        - petName
+        - petAge
+        - petType
+      properties:
+        petId:
+          type: integer
+          format: int64
+        petName:
+          type: string
+        petAge:
+          type: integer
+        petType:
+          type: string
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
