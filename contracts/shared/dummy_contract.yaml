@@ -1,0 +1,15 @@
+openapi: 3.0.2
+
+info:
+  title: "Dummy contract for shared object generation"
+  version: 1.0.0
+  description: "These definitions are shared across all of our service contracts"
+
+paths: {}
+
+components:
+  schemas:
+     Everything:
+       anyOf:
+         - $ref: 'error.yaml#/components/schemas/Error'
+         - $ref: 'pet.yaml#/components/schemas/Pet'

@@ -23,42 +23,10 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Pet"
+                  $ref: "../shared/pet.yaml#/components/schemas/Pet"
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-
-components:
-  schemas:
-    Pet:
-      type: object
-      required:
-        - id
-        - name
-        - age
-        - type
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        age:
-          type: integer
-        type:
-          type: string
-
-    Error:
-      type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+                $ref: "../shared/error.yaml#/components/schemas/Error"

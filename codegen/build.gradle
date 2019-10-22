@@ -10,15 +10,38 @@ dependencies {
 
 swaggerSources {
     def basePackage = 'com.example.petstore'
+
+    shared {
+        inputFile = file("${rootDir}/contracts/shared/dummy_contract.yaml")
+        code {
+            language = 'java'
+            rawOptions = [
+                    "--group-id=${basePackage}",
+                    "--model-package=${basePackage}.shared.models",
+            ]
+            components = [
+                    models         : ['Error', 'Pet'],
+                    modelDocs      : false,
+                    modelTests     : false,
+                    apis           : false,
+                    apiDocs        : false,
+                    apiTests       : false,
+                    supportingFiles: false
+            ]
+        }
+    }
+
     petstore {
         inputFile = file("${rootDir}/contracts/endpoints/petstore.yaml")
         code {
             language = 'java'
             configFile = file("${projectDir}/config/java.json")
             rawOptions = [
+                    "--group-id=${basePackage}",
                     "--api-package=${basePackage}.store.api",
                     "--model-package=${basePackage}.store.models",
-                    "--invoker-package=${basePackage}.store"
+                    "--invoker-package=${basePackage}.store",
+                    "--import-mappings=Pet=${basePackage}.shared.models.Pet,Error=${basePackage}.shared.models.Error"
             ]
             components = [
                     models         : true,
@@ -38,9 +61,11 @@ swaggerSources {
             language = 'java'
             configFile = file("${projectDir}/config/java.json")
             rawOptions = [
+                    "--group-id=${basePackage}",
                     "--api-package=${basePackage}.pets.api",
                     "--model-package=${basePackage}.pets.models",
-                    "--invoker-package=${basePackage}.pets"
+                    "--invoker-package=${basePackage}.pets",
+                    "--import-mappings=Pet=${basePackage}.shared.models.Pet,Error=${basePackage}.shared.models.Error"
             ]
             components = [
                     models         : true,
@@ -53,4 +78,9 @@ swaggerSources {
             ]
         }
     }
+}
+
+[swaggerSources.shared, swaggerSources.petstore, swaggerSources.pets].each {
+    compileJava.dependsOn(it.code)
+    sourceSets.main.java.srcDirs("${it.code.outputDir}/src/main/java")
 }

@@ -27,7 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "../shared/error.yaml#/components/schemas/Error"
 
 components:
   schemas:
@@ -45,34 +45,4 @@ components:
         recentPets:
           type: array
           items:
-            $ref: "#/components/schemas/Pet"
-
-    Pet:
-      type: object
-      required:
-        - petId
-        - petName
-        - petAge
-        - petType
-      properties:
-        petId:
-          type: integer
-          format: int64
-        petName:
-          type: string
-        petAge:
-          type: integer
-        petType:
-          type: string
-
-    Error:
-      type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+            $ref: "../shared/pet.yaml#/components/schemas/Pet"
