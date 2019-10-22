@@ -1,0 +1,56 @@
+plugins {
+    id 'org.hidetake.swagger.generator' version '2.18.1'
+}
+
+apply plugin: 'java-library'
+
+dependencies {
+    swaggerCodegen "io.swagger.codegen.v3:swagger-codegen-cli:3.0.13"
+}
+
+swaggerSources {
+    def basePackage = 'com.example.petstore'
+    petstore {
+        inputFile = file("${rootDir}/contracts/endpoints/petstore.yaml")
+        code {
+            language = 'java'
+            configFile = file("${projectDir}/config/java.json")
+            rawOptions = [
+                    "--api-package=${basePackage}.store.api",
+                    "--model-package=${basePackage}.store.models",
+                    "--invoker-package=${basePackage}.store"
+            ]
+            components = [
+                    models         : true,
+                    modelDocs      : false,
+                    modelTests     : false,
+                    apis           : true,
+                    apiDocs        : false,
+                    apiTests       : false,
+                    supportingFiles: true
+            ]
+        }
+    }
+
+    pets {
+        inputFile = file("${rootDir}/contracts/endpoints/pets.yaml")
+        code {
+            language = 'java'
+            configFile = file("${projectDir}/config/java.json")
+            rawOptions = [
+                    "--api-package=${basePackage}.pets.api",
+                    "--model-package=${basePackage}.pets.models",
+                    "--invoker-package=${basePackage}.pets"
+            ]
+            components = [
+                    models         : true,
+                    modelDocs      : false,
+                    modelTests     : false,
+                    apis           : true,
+                    apiDocs        : false,
+                    apiTests       : false,
+                    supportingFiles: true
+            ]
+        }
+    }
+}
