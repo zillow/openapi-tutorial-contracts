@@ -1,11 +1,14 @@
 plugins {
+    id 'java'
     id 'org.hidetake.swagger.generator' version '2.18.1'
 }
 
-apply plugin: 'java-library'
+repositories {
+    jcenter()
+}
 
 dependencies {
-    swaggerCodegen "io.swagger.codegen.v3:swagger-codegen-cli:3.0.13"
+    swaggerCodegen "org.openapitools:openapi-generator-cli:4.2.0"
 }
 
 swaggerSources {
