@@ -3,8 +3,8 @@
   
 **Phase 1 - Basic yaml:**
 ```  
-1.  Create pets.yaml  
-2.  Create petstore.yaml  
+1.  Create ./contracts/endpoints/pets.yaml  
+2.  Create ./contracts/endpoints/petstore.yaml  
 DONE
 ```  
   
