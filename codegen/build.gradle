@@ -1,11 +1,37 @@
 plugins {
+    id 'java'
     id 'org.hidetake.swagger.generator' version '2.18.1'
 }
 
-apply plugin: 'java-library'
+repositories {
+    jcenter()
+}
+
+ext {
+    swagger_codegen_version = '3.0.13'
+    oltu_version = "1.0.2"
+    retrofit_version = "2.3.0"
+    swagger_annotations_version = "2.0.10"
+    junit_version = "4.12"
+    rx_java_version = "2.1.1"
+    threetenbp_version = "1.3.5"
+    json_fire_version = "1.8.0"
+}
 
 dependencies {
-    swaggerCodegen "io.swagger.codegen.v3:swagger-codegen-cli:3.0.13"
+
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    compile "io.swagger.core.v3:swagger-annotations:$swagger_annotations_version"
+    compile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
+    compile "io.gsonfire:gson-fire:$json_fire_version"
+    compile "org.threeten:threetenbp:$threetenbp_version"
+
+    swaggerCodegen "io.swagger.codegen.v3:swagger-codegen-cli:$swagger_codegen_version"
+
 }
 
 swaggerSources {
@@ -37,7 +63,6 @@ swaggerSources {
             language = 'java'
             configFile = file("${projectDir}/config/java.json")
             rawOptions = [
-                    "--group-id=${basePackage}",
                     "--api-package=${basePackage}.store.api",
                     "--model-package=${basePackage}.store.models",
                     "--invoker-package=${basePackage}.store",
@@ -61,7 +86,6 @@ swaggerSources {
             language = 'java'
             configFile = file("${projectDir}/config/java.json")
             rawOptions = [
-                    "--group-id=${basePackage}",
                     "--api-package=${basePackage}.pets.api",
                     "--model-package=${basePackage}.pets.models",
                     "--invoker-package=${basePackage}.pets",
