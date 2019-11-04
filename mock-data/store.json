@@ -1,0 +1,66 @@
+{
+  "phoneNumber": "415-555-5555",
+  "address": "1234 Street, City, CA, 99999",
+  "recentPets": [
+    {
+      "petId": 1,
+      "petName": "Fido",
+      "petAge": 5,
+      "petType": "dog"
+    },
+    {
+      "petId": 2,
+      "petName": "Mittens",
+      "petAge": 1,
+      "petType": "cat"
+    },
+    {
+      "petId": 3,
+      "petName": "Polly",
+      "petAge": 3,
+      "petType": "bird"
+    },
+    {
+      "petId": 4,
+      "petName": "Nemo",
+      "petAge": 1,
+      "petType": "fish"
+    },
+    {
+      "petId": 5,
+      "petName": "John",
+      "petAge": 98,
+      "petType": "tortoise"
+    },
+    {
+      "petId": 6,
+      "petName": "Molly",
+      "petAge": 3,
+      "petType": "dog"
+    },
+    {
+      "petId": 7,
+      "petName": "Chris",
+      "petAge": 1,
+      "petType": "iguana"
+    },
+    {
+      "petId": 8,
+      "petName": "Matt",
+      "petAge": 4,
+      "petType": "snake"
+    },
+    {
+      "petId": 9,
+      "petName": "Fong",
+      "petAge": 2,
+      "petType": "hamster"
+    },
+    {
+      "petId": 10,
+      "petName": "Alyssa",
+      "petAge": 5,
+      "petType": "horse"
+    }
+  ]
+}
