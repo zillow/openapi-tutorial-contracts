@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Fido",
+    "age": 5,
+    "type": "dog"
+  },
+  {
+    "id": 2,
+    "name": "Mittens",
+    "age": 1,
+    "type": "cat"
+  },
+  {
+    "id": 3,
+    "name": "Polly",
+    "age": 3,
+    "type": "bird"
+  },
+  {
+    "id": 4,
+    "name": "Nemo",
+    "age": 1,
+    "type": "fish"
+  },
+  {
+    "id": 5,
+    "name": "John",
+    "age": 98,
+    "type": "tortoise"
+  },
+  {
+    "id": 6,
+    "name": "Molly",
+    "age": 3,
+    "type": "dog"
+  },
+  {
+    "id": 7,
+    "name": "Chris",
+    "age": 1,
+    "type": "iguana"
+  },
+  {
+    "id": 8,
+    "name": "Matt",
+    "age": 4,
+    "type": "snake"
+  },
+  {
+    "id": 9,
+    "name": "Fong",
+    "age": 2,
+    "type": "hamster"
+  },
+  {
+    "id": 10,
+    "name": "Alyssa",
+    "age": 5,
+    "type": "horse"
+  }
+]
